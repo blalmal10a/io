@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IO MCQ Tester</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="inner">
+    <h1>IO MCQ Tester</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">General Studies</a>
+      <a href="index.html">Discrete Mathematics</a>
+      <a href="index.html">Computer Architecture</a>
+      <a href="index.html">Operating Systems</a>
+      <a href="index.html">OOP</a>
+      <a href="index.html">Web Technologies</a>
+      <a href="index.html">Database Management</a>
+      <a href="index.html">Cloud Computing</a>
+      <a href="index.html">Computer Networks</a>
+      <a href="index.html">Software Engineering</a>
+      <a href="index.html">AI & ML</a>
+      <a href="index.html">Cybersecurity</a>
+      <a href="index.html">MCQ Tester</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="card">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a> <span>General Studies</span>
+    </div>
+    <h2 id="quizTitle">Select a Paper</h2>
+    <div id="quizContent" style="display:none;"></div>
+    <div id="scoreCard" style="display:none;"></div>
+  </div>
+
+  <footer style="margin-top:24px; padding:16px; text-align:center; color:#6b7280;">
+    <p>Select a paper from the TOC above to start the MCQ tester.</p>
+  </footer>
+</div>
+
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/alpine.js"></script>
+<script>
+// ============================================
+// MCQ Tester - Alpine.js SPA with Hash Routing
+// ============================================
+
+// Sample questions (exam-standard, 1/3 negative marking)
+const questions = [
+  {
+    id: 1,
+    paper: "General Studies",
+    topic: "Current events",
+    question: "Which of the following is NOT a major current event in India?",
+    options: ["The 2024 Indian General Elections", "The 2023-24 Monsoon in Mizoram", "The 2025 Union Budget", "The 2024-25 State Elections in Assam"],
+    answer: 0,
+    explanation: "The 2024-25 State Elections in Assam are a major current event, while the others are either past events or not major current events."
+  },
+  {
+    id: 2,
+    paper: "General Studies",
+    topic: "Geography",
+    question: "Which of the following is the capital of Mizoram?",
+    options: ["Aizawl", "Changthung", "Mizoram", "Lushai"],
+    answer: 0,
+    explanation: "Aizawl is the capital of Mizoram."
+  },
+  {
+    id: 3,
+    paper: "Discrete Mathematics",
+    topic: "Graph Theory",
+    question: "In a directed graph with 5 vertices, what is the maximum number of edges possible?",
+    options: ["10", "15", "20", "25"],
+    answer: 0,
+    explanation: "Maximum edges in a directed graph with n vertices is n*(n-1) = 5*4 = 20."
+  },
+  {
+    id: 4,
+    paper: "Computer Architecture",
+    topic: "CPU Organization",
+    question: "Which component is responsible for fetching instructions from memory?",
+    options: ["ALU", "Registers", "Cache", "Memory Controller"],
+    answer: 2,
+    explanation: "The Memory Controller fetches instructions from memory."
+  },
+  {
+    id: 5,
+    paper: "Operating Systems",
+    topic: "Process Management",
+    question: "Which scheduling algorithm is best for real-time systems?",
+    options: ["Round Robin", "Shortest Job First", "Priority Scheduling", "FCFS"],
+    answer: 2,
+    explanation: "Priority scheduling is commonly used for real-time systems to meet deadlines."
+  },
+  {
+    id: 6,
+    paper: "OOP",
+    topic: "Inheritance",
+    question: "Which of the following is NOT a type of inheritance in OOP?",
+    options: ["Composition", "Inheritance", "Polymorphism", "Encapsulation"],
+    answer: 2,
+    explanation: "Composition is a different design principle; inheritance is a core OOP concept."
+  },
+  {
+    id: 7,
+    paper: "Web Technologies",
+    topic: "HTML5",
+    question: "Which HTML5 feature allows for responsive design?",
+    options: ["Flexbox", "Grid", "CSS Grid", "CSS Frameworks"],
+    answer: 1,
+    explanation: "Flexbox and CSS Grid are modern layout techniques in HTML5."
+  },
+  {
+    id: 8,
+    paper: "Database Management",
+    topic: "Normalization",
+    question: "Which normal form ensures that every non-prime attribute is functionally dependent on a candidate key?",
+    options: ["1NF", "2NF", "3NF", "BCNF"],
+    answer: 2,
+    explanation: "Third Normal Form (3NF) ensures no non-prime attribute is dependent on another non-prime attribute."
+  },
+  {
+    id: 9,
+    paper: "Cloud Computing",
+    topic: "Service Models",
+    question: "Which cloud service model provides the most control over infrastructure?",
+    options: ["IaaS", "PaaS", "SaaS", "FaaS"],
+    answer: 0,
+    explanation: "IaaS (Infrastructure as a Service) gives the most control over infrastructure."
+  },
+  {
+    id: 10,
+    paper: "Computer Networks",
+    topic: "TCP/IP",
+    question: "Which layer of the OSI model handles IP addressing?",
+    options: ["Link", "Network", "Transport", "Application"],
+    answer: 1,
+    explanation: "The Network layer handles IP addressing and routing."
+  },
+  {
+    id: 11,
+    paper: "Software Engineering",
+    topic: "Requirements",
+    question: "What is the primary purpose of a Software Requirements Specification (SRS)?",
+    options: ["To define the functional and non-functional requirements of a system", "To design the system architecture", "To test the system", "To deploy the system"],
+    answer: 0,
+    explanation: "SRS documents the functional and non-functional requirements of the system."
+  },
+  {
+    id: 12,
+    paper: "AI & ML",
+    topic: "Machine Learning",
+    question: "Which algorithm is used for classification tasks with linearly separable data?",
+    options: ["K-Means", "Linear Regression", "Decision Tree", "Neural Network"],
+    answer: 2,
+    explanation: "Decision Trees are commonly used for classification tasks."
+  },
+  {
+    id: 13,
+    paper: "Cybersecurity",
+    topic: "Threats",
+    question: "Which attack vector is most commonly associated with phishing?",
+    options: ["SQL Injection", "Phishing", "DDoS", "Man-in-the-Middle"],
+    answer: 1,
+    explanation: "Phishing is a social engineering attack that uses deceptive emails to steal credentials."
+  }
+];
+
+// State
+let currentPaper = "General Studies";
+let currentQuestionIndex = 0;
+let selectedOption = null;
+let isShowingQuiz = true;
+let isShowingResult = false;
+let score = 0;
+let totalQuestions = questions.length;
+let currentQuestion = questions[currentQuestionIndex];
+
+// Initialize
+function init() {
+  // Set initial paper
+  currentPaper = "General Studies";
+  currentQuestionIndex = 0;
+  selectedOption = null;
+  isShowingQuiz = true;
+  isShowingResult = false;
+  score = 0;
+  loadQuestions();
+}
+
+// Load questions
+async function loadQuestions() {
+  try {
+    const res = await fetch("../data/questions.json");
+    questions = await res.json();
+  } catch (e) {
+    console.error("Failed to load questions:", e);
+    questions = [];
+  }
+}
+
+// Navigate to a paper
+async function navigateToPaper(paper) {
+  currentPaper = paper;
+  isShowingQuiz = true;
+  isShowingResult = false;
+  selectedOption = null;
+  currentQuestionIndex = 0;
+  loadQuestions();
+  renderQuiz();
+}
+
+// Render quiz content
+function renderQuiz() {
+  const quizTitle = document.getElementById("quizTitle");
+  const quizContent = document.getElementById("quizContent");
+  
+  if (currentQuestionIndex >= totalQuestions) {
+    // No more questions
+    quizContent.style.display = "none";
+    isShowingQuiz = false;
+    return;
+  }
+  
+  quizTitle.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+  
+  // Show question
+  quizContent.style.display = "block";
+  quizContent.innerHTML = `
+    <div class="question">
+      <strong>Paper:</strong> ${currentPaper}<br>
+      <strong>Topic:</strong> ${currentQuestion.topic}<br>
+      <p>${currentQuestion.question}</p>
+      <div class="options">
+        ${currentQuestion.options.map((opt, i) => `
+          <label class="option"><input type="radio" name="q" value="${i}" ${selectedOption === i ? "checked" : ""} onchange="selectOption(${i})">
+            ${opt}
+          </label>
+        `).join("")}
+      </div>
+      <button onclick="nextQuestion()">Next</button>
+      <button onclick="prevQuestion()">Previous</button>
+    </div>
+  `;
+}
+
+// Select an option
+function selectOption(index) {
+  selectedOption = index;
+  renderQuiz();
+}
+
+// Next question
+function nextQuestion() {
+  if (currentQuestionIndex < totalQuestions - 1) {
+    currentQuestionIndex++;
+    renderQuiz();
+  } else {
+    isShowingResult = true;
+    renderResult();
+  }
+}
+
+// Previous question
+function prevQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    renderQuiz();
+  }
+}
+
+// Submit answer
+function submitAnswer() {
+  if (!selectedOption) return;
+  
+  const correctIndex = questions.findIndex(q => q.answer === selectedOption);
+  
+  if (correctIndex === -1) {
+    // Wrong answer
+    score -= 1;
+    selectedOption = null;
+  } else if (correctIndex === currentQuestionIndex) {
+    // Correct answer
+    score += 2;
+  } else {
+    // Wrong answer
+    score -= 1;
+  }
+  
+  renderQuiz();
+}
+
+// Show result page
+function renderResult() {
+  isShowingQuiz = false;
+  isShowingResult = true;
+  
+  const totalCorrect = (totalQuestions - currentQuestionIndex) + (currentQuestionIndex + 1);
+  const percentage = ((totalCorrect / totalQuestions) * 100).toFixed(1);
+  
+  document.getElementById("scoreCard").style.display = "block";
+  document.getElementById("quizContent").style.display = "none";
+  
+  const scoreText = `
+    <div class="score">
+      <strong>Your Score:</strong> ${score} / ${totalQuestions} (${percentage}%)
+    </div>
+  `;
+  document.getElementById("scoreCard").innerHTML = scoreText;
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", init);
+
+// Handle hash changes (e.g., #quiz, #settings, #result)
+document.addEventListener("hashchange", () => {
+  const hash = document.hash.name;
+  if (hash === "quiz") {
+    navigateToPaper(currentPaper);
+  } else if (hash === "settings") {
+    // Show settings page
+    document.getElementById("quizContent").style.display = "none";
+    document.getElementById("scoreCard").style.display = "none";
+    document.getElementById("quizTitle").textContent = "Settings";
+    document.getElementById("quizContent").innerHTML = `
+      <div class="settings">
+        <h3>Settings</h3>
+        <p>Configure your tester preferences here.</p>
+      </div>
+    `;
+  } else if (hash === "result") {
+    renderResult();
+  }
+});
+
+// Keyboard navigation
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") nextQuestion();
+  if (e.key === "ArrowLeft") prevQuestion();
+});
+</script>
+</body>
+</html>

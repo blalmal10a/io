@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "paper": "General Studies",
+    "topic": "Current Events",
+    "question": "Which of the following is a current event of national importance?",
+    "options": ["The 2024 Indian General Elections", "The 2023-24 Monsoon in Mizoram", "The 2025 Union Budget", "The 2024-25 State Elections in Assam"],
+    "answer": 0,
+    "explanation": "The 2024 Indian General Elections are a major current event of national importance."
+  },
+  {
+    "id": 2,
+    "paper": "General Studies",
+    "topic": "Geography",
+    "question": "Which of the following is the capital of Mizoram?",
+    "options": ["Aizawl", "Changthung", "Mizoram", "Lushai"],
+    "answer": 0,
+    "explanation": "Aizawl is the capital of Mizoram."
+  },
+  {
+    "id": 3,
+    "paper": "General Studies",
+    "topic": "History",
+    "question": "Who was the first Indian Prime Minister?",
+    "options": ["Jawaharlal Nehru", "Indira Gandhi", "Rajiv Gandhi", "Lal Bahadur Shastri"],
+    "answer": 0,
+    "explanation": "Jawaharlal Nehru was the first Prime Minister of India."
+  },
+  {
+    "id": 4,
+    "paper": "General Studies",
+    "topic": "Geography",
+    "question": "Which river flows through Mizoram?",
+    "options": ["Ganga", "Yamuna", "Barak", "Brahmaputra"],
+    "answer": 2,
+    "explanation": "The Barak River flows through Mizoram."
+  },
+  {
+    "id": 5,
+    "paper": "Discrete Mathematics",
+    "topic": "Graph Theory",
+    "question": "In a directed graph with 5 vertices, what is the maximum number of edges possible?",
+    "options": ["10", "15", "20", "25"],
+    "answer": 2,
+    "explanation": "Maximum edges in a directed graph with n vertices is n*(n-1) = 5*4 = 20."
+  },
+  {
+    "id": 6,
+    "paper": "Discrete Mathematics",
+    "topic": "Set Theory",
+    "question": "How many subsets does a set with 3 elements have?",
+    "options": ["3", "6", "8", "9"],
+    "answer": 2,
+    "explanation": "A set with n elements has 2^n subsets; for 3 elements, 2^3 = 8."
+  },
+  {
+    "id": 7,
+    "paper": "Computer Architecture",
+    "topic": "CPU Organization",
+    "question": "Which component is responsible for fetching instructions from memory?",
+    "options": ["ALU", "Registers", "Cache", "Memory Controller"],
+    "answer": 3,
+    "explanation": "The Memory Controller fetches instructions from memory."
+  },
+  {
+    "id": 8,
+    "paper": "Computer Architecture",
+    "topic": "Instruction Cycle",
+    "question": "What does the instruction cycle consist of?",
+    "options": ["Fetch, Decode, Execute", "Fetch, Decode, Store", "Fetch, Execute, Store", "Fetch, Write, Read"],
+    "answer": 0,
+    "explanation": "The instruction cycle consists of Fetch, Decode, and Execute phases."
+  },
+  {
+    "id": 9,
+    "paper": "Operating Systems",
+    "topic": "Process Management",
+    "question": "Which scheduling algorithm is best for real-time systems?",
+    "options": ["Round Robin", "Shortest Job First", "Priority Scheduling", "FCFS"],
+    "answer": 2,
+    "explanation": "Priority scheduling is commonly used for real-time systems to meet deadlines."
+  },
+  {
+    "id": 10,
+    "paper": "Operating Systems",
+    "topic": "Deadlocks",
+    "question": "Which of the following is NOT a condition for deadlock?",
+    "options": ["Mutual Exclusion", "Hold and Wait", "Preemption", "Circular Wait"],
+    "answer": 2,
+    "explanation": "Preemption is a method to avoid deadlock, not a condition for deadlock."
+  },
+  {
+    "id": 11,
+    "paper": "OOP",
+    "topic": "Inheritance",
+    "question": "Which of the following is NOT a type of inheritance in OOP?",
+    "options": ["Multiple Inheritance", "Multilevel Inheritance", "Hierarchical Inheritance", "Composition"],
+    "answer": 3,
+    "explanation": "Composition is a design principle, not a type of inheritance."
+  },
+  {
+    "id": 12,
+    "paper": "Web Technologies",
+    "topic": "HTML5",
+    "question": "Which HTML5 feature allows for responsive design?",
+    "options": ["Canvas", "SVG", "CSS Grid", "WebSockets"],
+    "answer": 2,
+    "explanation": "CSS Grid is a powerful layout system that enables responsive design."
+  },
+  {
+    "id": 13,
+    "paper": "Database Management",
+    "topic": "Normalization",
+    "question": "Which normal form ensures that every non-prime attribute is functionally dependent on a candidate key?",
+    "options": ["1NF", "2NF", "3NF", "BCNF"],
+    "answer": 2,
+    "explanation": "Third Normal Form (3NF) ensures no non-prime attribute is dependent on another non-prime attribute."
+  },
+  {
+    "id": 14,
+    "paper": "Cloud Computing",
+    "topic": "Service Models",
+    "question": "Which cloud service model provides the most control over infrastructure?",
+    "options": ["IaaS", "PaaS", "SaaS", "FaaS"],
+    "answer": 0,
+    "explanation": "IaaS (Infrastructure as a Service) gives the most control over infrastructure."
+  },
+  {
+    "id": 15,
+    "paper": "Computer Networks",
+    "topic": "TCP/IP",
+    "question": "Which layer of the OSI model handles IP addressing?",
+    "options": ["Link", "Network", "Transport", "Application"],
+    "answer": 1,
+    "explanation": "The Network layer handles IP addressing and routing."
+  },
+  {
+    "id": 16,
+    "paper": "Software Engineering",
+    "topic": "Requirements",
+    "question": "What is the primary purpose of a Software Requirements Specification (SRS)?",
+    "options": ["To define the functional and non-functional requirements of a system", "To design the system architecture", "To test the system", "To deploy the system"],
+    "answer": 0,
+    "explanation": "SRS documents the functional and non-functional requirements of the system."
+  },
+  {
+    "id": 17,
+    "paper": "AI & ML",
+    "topic": "Machine Learning",
+    "question": "Which algorithm is used for classification tasks with linearly separable data?",
+    "options": ["K-Means", "Linear Regression", "Decision Tree", "Neural Network"],
+    "answer": 2,
+    "explanation": "Decision Trees are commonly used for classification tasks with linearly separable data."
+  },
+  {
+    "id": 18,
+    "paper": "Cybersecurity",
+    "topic": "Threats",
+    "question": "Which attack vector is most commonly associated with phishing?",
+    "options": ["SQL Injection", "Phishing", "DDoS", "Man-in-the-Middle"],
+    "answer": 1,
+    "explanation": "Phishing is a social engineering attack that uses deceptive emails to steal credentials."
+  }
+]
