@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "ARCHITECTURE.md",
+    "PLAN.md",
+    "tasks/current_task-*.md"
+  ],
+  "permissions": [
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "external_directory", "resource": "*", "effect": "allow" },
+    { "action": "edit", "resource": "*", "effect": "allow" },
+    { "action": "edit", "resource": "/*", "effect": "deny" }
+  ],
+  "mcp": {
+    "servers": {
+      "playwright": {
+        "type": "local",
+        "command": ["bunx", "@playwright/mcp", "--browser", "chrome"]
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--no-usage-statistics"]
+      },
+      "context7": {
+        "type": "local",
+        "command": ["npx", "-y", "@upstash/context7-mcp"]
+      },
+      "ddg-search": {
+        "type": "local",
+        "command": ["uvx", "--with", "duckduckgo-mcp-server[browser]", "duckduckgo-mcp-server"]
+      },
+      "github": {
+        "type": "local",
+        "command": [
+          "docker",
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "ghcr.io/github/github-mcp-server"
+        ]
+      }
+    }
+  }
+}

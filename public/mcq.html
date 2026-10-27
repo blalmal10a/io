@@ -51,7 +51,7 @@
 // ============================================
 
 // Sample questions (exam-standard, 1/3 negative marking)
-const questions = [
+let questions = [
   {
     id: 1,
     paper: "General Studies",
@@ -198,9 +198,11 @@ async function loadQuestions() {
   try {
     const res = await fetch("../data/questions.json");
     questions = await res.json();
+    totalQuestions = questions.length;
   } catch (e) {
     console.error("Failed to load questions:", e);
     questions = [];
+    totalQuestions = 0;
   }
 }
 
@@ -227,6 +229,7 @@ function renderQuiz() {
     return;
   }
   
+  currentQuestion = questions[currentQuestionIndex];
   quizTitle.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
   
   // Show question
