@@ -20,6 +20,7 @@ Static study portal for the **Mizoram ICT Department Informatics Officer (Level-
 | --- | --- |
 | `ARCHITECTURE.md` | Full structure: layout, data flow, schemas, CSS vocabulary, known defects |
 | `PLAN.md` | Hard rules. Never violate. |
+| `ASTRO.md` | Approved Astro migration plan (NOT yet implemented — go-ahead required) |
 | `tasks/current_task-YYYY-MM-DD.md` | Today's tasks (auto-loaded into every session) |
 
 All three are auto-loaded via `instructions` in `opencode.json`.

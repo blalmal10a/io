@@ -7,11 +7,8 @@ Migrate the site to Astro (static site generator) — then resume topic-by-topic
 ## Tasks
 
 - [x] Daily task roll (2026-10-27 → history; this file created)
-- [ ] Phase 1: `.gitignore` + checkpoint commit (docs suite + mcq fixes)
-- [ ] Phase 2: Astro scaffold + port (layout, styles, home, generated notes TOC, 14 markdown scaffolds)
-- [ ] Phase 3: MCQ tester as island (paper filtering, correct 2-marks/−⅓ scoring, fixed state bugs)
-- [ ] Build + preview + Playwright verification
-- [ ] Phase 5 (if green): cutover — Herd docroot → `dist/`, retire legacy `public/` HTML
+- [x] Phase 1: `.gitignore` + checkpoint commit (docs suite + mcq fixes)
+- [ ] Phase 2+: Astro migration per `ASTRO.md` — **deferred until user go-ahead** (plan written to `ASTRO.md` 2026-10-28)
 - [ ] Phase 6 (after cutover): refresh `AGENTS.md` / `ARCHITECTURE.md` / `PLAN.md` for the build-based workflow
 - [ ] Choose first topic to populate (now in markdown)
 
